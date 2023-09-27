@@ -6,10 +6,10 @@ import django
 django.setup()
 from malumotapp.models import Malumot
 
-load_dotenv()
-BOT_TOKEN = os.getenv('BOT_TOKEN')
+# load_dotenv()
+# BOT_TOKEN = os.getenv('BOT_TOKEN')
 
-bot = telebot.TeleBot(BOT_TOKEN)
+bot = telebot.TeleBot('6651502135:AAHswBWZ4aJK1qxcDuHl9GyCjL4sl-BufD0')
 sarlavhalar = []
 malumotlar = []
 
@@ -19,8 +19,6 @@ def data_cell():
     for malumott in db:
         sarlavhalar.append(malumott.nomi)
         malumotlar.append(malumott.malumot)
-data_cell()
-
 
 def start_keyboard():
     keyboard = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True)
@@ -33,7 +31,11 @@ def start_keyboard():
     
 @bot.message_handler(commands=['start'])
 def start_message(message: types.Message):
-  bot.send_message(message.from_user.id,"Bulardan birini tanlang.", 
+    global sarlavhalar, malumotlar
+    sarlavhalar = []
+    malumotlar = []
+    data_cell()
+    bot.send_message(message.from_user.id,"Bulardan birini tanlang.", 
                    reply_markup=start_keyboard())
 
 @bot.message_handler()
