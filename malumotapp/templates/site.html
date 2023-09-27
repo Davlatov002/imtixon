@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PostosInfo</title>
+</head>
+<body>
+<h1>Posts</h1>
+<table border="1.5" style="width: 100%; margin: auto;">
+    <caption><h2>There are some posts</h2></caption>
+    <tr style="text-align: center; background-color: rgb(126, 243, 90);">
+        <td><h2>Cament neme</h2></td>
+        <td><h2>coment</h2></td>
+    </tr>
+    {%for post in posts%}
+    <tr>
+        <td>{{post.cament_neme}}</td>
+        <td>{{post.coment}}</td>
+    </tr>
+    {%endfor%}
+</table>
+</body>
+</html>
